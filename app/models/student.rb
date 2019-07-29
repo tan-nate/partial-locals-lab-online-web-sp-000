@@ -17,6 +17,11 @@ class Student < ActiveRecord::Base
   def self.search(criteria)
     capitalized_criteria = criteria.capitalize
     names = self.all.collect {|student| student.name}
-    names.grep(/#{capitalized_criteria}\w+/)
+    results_as_strings = names.grep(/#{capitalized_criteria}\w+/)
+    results_as_objects = self.all.select do |student|
+      results_as_strings.each do |result|
+        student.name == result
+      end
+    end
   end
 end
