@@ -15,7 +15,8 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   def self.search(criteria)
+    capitalized_criteria = criteria.capitalize
     names = self.all.collect {|student| student.name}
-    names.grep(/\w+#{criteria}/)
+    names.grep(/\w+#{capitalized_criteria}/)
   end
 end
