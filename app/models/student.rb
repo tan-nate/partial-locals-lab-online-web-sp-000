@@ -23,5 +23,6 @@ class Student < ActiveRecord::Base
     results_as_strings.each do |name|
       results_as_objects << self.all.find_by(name: name)
     end
+    results_as_objects
   end
 end
