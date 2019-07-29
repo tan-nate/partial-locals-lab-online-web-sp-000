@@ -13,4 +13,9 @@
 class Student < ActiveRecord::Base
   has_many :classroom_students
   has_many :classrooms, through: :classroom_students
+
+  def self.search(criteria)
+    names = self.all.collect {|student| student.name}
+    names.grep(/\w+#{criteria}/)
+  end
 end
