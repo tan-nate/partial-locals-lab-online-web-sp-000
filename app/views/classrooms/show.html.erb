@@ -1,9 +1,5 @@
 Classroom Info
 <%= render partial: "classrooms/classroom", locals: {classroom: @classroom} %>
-<p>
-<%= @classroom.course_name %>
-<%= @classroom.semester %>
-</p>
 
 We now want to call out the students in the class:
 <% @classroom.students.each do |student| %>
