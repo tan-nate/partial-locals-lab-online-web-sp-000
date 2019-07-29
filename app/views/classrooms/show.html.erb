@@ -5,4 +5,6 @@ Classroom Info
 </p>
 
 We now want to call out the students in the class:
-<%= render partial: "students/student", locals: {classroom_students, @classroom.students} %>
+<% @classroom.students each do |student| %>
+  <%= render partial: "students/student", locals: {student, student} %>
+<% end %>
